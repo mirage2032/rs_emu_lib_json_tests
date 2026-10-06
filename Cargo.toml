@@ -3,6 +3,11 @@ name = "emu_lib_json_tests"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+# `embed` compiles every test file into the binary (about 1.4 GB) for
+# `get_z80_tests`. Without it, read the files from `Z80_V1_DIR` at runtime.
+default = ["embed"]
+embed = ["dep:include_directory"]
+
 [dependencies]
-#include_dir = "0.7.4"
-include_directory = "0.1.1"
+include_directory = { version = "0.1.1", optional = true }
